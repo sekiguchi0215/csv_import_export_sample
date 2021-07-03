@@ -20,4 +20,7 @@
     <%= f.file_field :file, accept: "text/csv" %>
     <%= f.submit "CSVインポート" %>
   <% end %>
+  <p>
+    <%= link_to "CSVエクスポート", users_path(format: :csv) %>
+  </p>
 </table>
