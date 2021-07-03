@@ -1,7 +1,11 @@
 class User < ApplicationRecord
+  CSV_COLUMNS = %w[name age height].freeze
+
   def self.import_csv(file:)
+    list = []
     CSV.foreach(file.path, headers: true) do |row|
-      create!(row.to_h)
+      list << row.to_h.slice(*CSV_COLUMNS)
     end
+    User.import!(list)
   end
 end
